@@ -40,11 +40,11 @@ with open('mpg.csv', newline='') as csvfile:
 
     #-----TEST OUTPUTS ----------------------------------------------------------------------------------#
     # Print sets to command line
-    #print(s_manuf)
-    #print(s_class)
+    print(s_manuf)
+    print(s_class)
     # Pring grouped by list to command newline
     #print(ls_avg_hm_manuf)
     #print(ls_avg_hm_class)
     # Print the sentences in command line
-    print(w_avg_cm_all)
-    print(w_avg_hm_all)
+    #print(w_avg_cm_all)
+    #print(w_avg_hm_all)
