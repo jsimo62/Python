@@ -2,5 +2,3 @@ Out of all 234 vehicles, the average city mpg is 16.86
 
 Out of all 234 vehicles, the average highway MPG is 23.44
 
-If we only look at the 18 audis, the average highway MPG is 26.44
-
