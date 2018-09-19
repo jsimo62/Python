@@ -90,17 +90,15 @@ with open('mpg.csv', newline='') as csvfile:
     calc_avg_cm_all = mpg_calc(ls_avg_cm_all)
     calc_avg_hw_all = mpg_calc(ls_avg_hm_all)
     calc_avg_hw_audi = mpg_calc(ls_audi)
-    # calc_avg_cm_all = sum(ls_avg_cm_all)/len(ls_avg_cm_all)
-    # calc_avg_hw_all = sum(ls_avg_hm_all)/len(ls_avg_hm_all)
-    # calc_avg_hw_audi = sum(ls_audi)/len(ls_audi)
+
     # Make the sentence for all vehicles
     w_avg_cm_all = ('Out of all ' + str(len(ls_avg_cm_all))
         + ' vehicles, the average city mpg is ' + str(round(calc_avg_cm_all,2)) + '\n')
     w_avg_hm_all = ('Out of all ' + str(len(ls_avg_hm_all))
         + ' vehicles, the average highway MPG is ' + str(round(calc_avg_hw_all,2)) + '\n')
-
     w_avg_hm_audi = ('If we only look at the ' + str(len(ls_audi))
         + ' audis, the average highway MPG is ' + str(round(calc_avg_hw_audi,2)) + '\n')
+
     #-----PRINT TO TEXT FILE-----------------------------------------------------------------------------#
     # 1 - Create/Open File
     output = open('jsimo62_assignment3.txt', 'w+')
