@@ -1,5 +1,6 @@
 # Import CSV class to work with CSV files
 import csv
+import os
 
 # initiate list
 ls_avg_cm_all, ls_avg_hm_all, ls_avg_hm_class, ls_avg_hm_manuf = [], [], [], []
@@ -103,10 +104,27 @@ with open('mpg.csv', newline='') as csvfile:
     # 1 - Create/Open File
     output = open('jsimo62_assignment3.txt', 'w+')
     # 2 - Write to file
-    output.write(w_avg_cm_all)
-    output.write(w_avg_hm_all)
-    output.write(w_avg_hm_audi)
+    output.write(w_avg_cm_all + '\n')
+    output.write(w_avg_hm_all + '\n')
+    output.write(w_avg_hm_audi + '\n')
     output.close()
+
+    # import os
+    # player = 'bob'
+    #
+    # filename = player+'.txt'
+    #
+    # if os.path.exists(filename):
+    #     append_write = 'a' # append if already exists
+    # else:
+    #     append_write = 'w' # make a new file if not
+    #
+    # highscore = open(filename,append_write)
+    # highscore.write("Username: " + player + '\n')
+    # highscore.close()
+
+
+
 
     #-----TEST OUTPUTS ----------------------------------------------------------------------------------#
     # Print sets to command line
