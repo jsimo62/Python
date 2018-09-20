@@ -1,3 +1,34 @@
+
+
+***AVERAGE MPG PER CLASS***
+compact 28.3
+2seater 24.8
+midsize 27.29
+minivan 22.36
+pickup 16.88
+subcompact 28.14
+suv 18.13
+
+
+***AVERAGE MPG PER MANUFACTURER***
+audi 26.44
+chevrolet 21.89
+dodge 17.95
+ford 19.36
+honda 32.56
+hyundai 26.86
+jeep 17.62
+land rover 16.5
+lincoln 17.0
+mercury 18.0
+nissan 24.62
+pontiac 26.4
+subaru 25.57
+toyota 24.91
+volkswagen 29.22
+
+
+***AVERAGE MPG FOR ALL***
 Out of all 234 vehicles, the average city mpg is 16.86
 
 Out of all 234 vehicles, the average highway MPG is 23.44
