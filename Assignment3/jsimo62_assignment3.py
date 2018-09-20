@@ -1,139 +1,141 @@
 # Import CSV class to work with CSV files
 import csv
-import os
 
-# initiate list
-ls_avg_cm_all, ls_avg_hm_all, ls_avg_hm_class, ls_avg_hm_manuf = [], [], [], []
-# initiate sets
-s_manuf, s_class = set(),set()
+# VARIABLES LIST
+ls_avg_cm_all, ls_avg_hm_all = [], []
+c_vehicles = {'compact': [],
+              '2seater': [],
+              'compact': [],
+              'midsize': [],
+              'minivan': [],
+              'pickup': [],
+              'subcompact': [],
+              'suv': [],}
+m_vehicles = {'audi': [],
+              'chevrolet': [],
+              'dodge': [],
+              'ford': [],
+              'honda': [],
+              'hyundai': [],
+              'jeep': [],
+              'land rover': [],
+              'lincoln': [],
+              'mercury': [],
+              'nissan': [],
+              'pontiac': [],
+              'subaru': [],
+              'toyota': [],
+              'volkswagen': []}
+file = 'mpg.csv'
 
-ls_audi= []
-
+# FUNCTION LIST
+def group_by_class(row):
+    # group the vehicles by class
+    if row['class'] == 'compact':
+        c_vehicles['compact'].append(int(row['hwy']))
+    elif row['class'] == 'midsize':
+        c_vehicles['midsize'].append(int(row['hwy']))
+    elif row['class'] == 'suv':
+        c_vehicles['suv'].append(int(row['hwy']))
+    elif row['class'] == '2seater':
+        c_vehicles['2seater'].append(int(row['hwy']))
+    elif row['class'] == 'pickup':
+        c_vehicles['pickup'].append(int(row['hwy']))
+    elif row['class'] == 'minivan':
+        c_vehicles['minivan'].append(int(row['hwy']))
+    elif row['class'] == 'subcompact':
+        c_vehicles['subcompact'].append(int(row['hwy']))
+    return
+def group_by_manuf(row):
+    # Group the vehicles by manufacturer
+    if row['manufacturer'] == 'audi':
+        m_vehicles['audi'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'chevrolet':
+        m_vehicles['chevrolet'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'dodge':
+        m_vehicles['dodge'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'ford':
+        m_vehicles['ford'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'honda':
+        m_vehicles['honda'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'hyundai':
+        m_vehicles['hyundai'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'jeep':
+        m_vehicles['jeep'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'land rover':
+        m_vehicles['land rover'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'lincoln':
+        m_vehicles['lincoln'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'mercury':
+        m_vehicles['mercury'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'nissan':
+        m_vehicles['nissan'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'pontiac':
+        m_vehicles['pontiac'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'subaru':
+        m_vehicles['subaru'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'toyota':
+       m_vehicles['toyota'].append(int(row['hwy']))
+    elif row['manufacturer'] == 'volkswagen':
+       m_vehicles['volkswagen'].append(int(row['hwy']))
+    return
 def mpg_calc(v_list):
     # Calculate the average
     calc = sum(v_list)/len(v_list)
     return calc
-
-def print_to_file(v_list):
-    #-----PRINT TO TEXT FILE-----------------------------------------------------------------------------#
-    # 1 - Create/Open File
-    output = open('jsimo62_assignment3.txt', 'w+')
-    # 2 - Write to file
-    output.write(w_avg_cm_all)
-    output.write(w_avg_hm_all)
-    output.write(w_avg_hm_audi)
-    output.close()
-    return
-
-# res_attempt = 0
-# while res_attempt < 4:
-#     #print(str(res_attempt))
-#
-#     response = input("Would you like to know the mpg for all vehicles\nin the list or the mpg by group? (all / group) ")
-#     if response == "all":
-#         # Calculate the average for all vehicles
-#         calc_avg_cm_all = mpg_calc(ls_avg_cm_all)
-#         calc_avg_hw_all = mpg_calc(ls_avg_hm_all)
-#         print("all")
-#         res_attempt = 5
-#     elif response == "group":
-#         print("group")
-#         res_attempt = 5
-#     else:
-#         res_attempt += 1
-#         if res_attempt <= 2:
-#             print("\nInvalid Repsonse. Only 'all' or by 'group' are accepted responses.")
-#             print(str(res_attempt))
-#         elif res_attempt <=3:
-#             print("This is your last attempt.  Please type either 'all or 'group' to continue.\n**The program will end after 1 more inncorrect entry**")
-#             print(str(res_attempt))
-#         else:
-#             print("\nGood Bye")
-#             print(str(res_attempt))
-
-
-#-----WORK WITH THE FILE---------------------------------------------------------------------------------#
-with open('mpg.csv', newline='') as csvfile:
-    f_mpg = csv.DictReader(csvfile)
-
-    # Loop through csv
-    for row in f_mpg:
-        # Create a set of unique manufacurers and classes
-        s_manuf.add(row['manufacturer'])
-        s_class.add(row['class'])
-        # append to specified list
-        ls_avg_cm_all.append(int(row['cty']))
-        ls_avg_hm_all.append(int(row['hwy']))
-
-        if row['manufacturer'] == 'audi':
-            ls_audi.append(int(row['hwy']))
-        #elif row['manufacturer'] == 'chevrolet':
-        #    ls_chev.append(int(row['hwy']))
-        #elif row['manufacturer'] == 'dodge':
-        #    ls_chev.append(int(row['hwy']))
-        #elif row['manufacturer'] == 'ford':
-        #    ls_chev.append(int(row['hwy']))
-        #elif row['manufacturer'] == 'honda':
-        #    ls_chev.append(int(row['hwy']))
-        #elif row['manufacturer'] == 'hyundai':
-        #    ls_chev.append(int(row['hwy']))
-        #elif row['manufacturer'] == 'jeep':
-        #    ls_chev.append(int(row['hwy']))
-        #elif row['manufacturer'] == 'land rover':
-        #    ls_chev.append(int(row['hwy']))
-    ls_manufacturer = s_manuf
-    ls_class = s_class
-    #print(sorted(ls_manufacturer))
-    #print(sorted(ls_class))
-    #print(ls_audi)
-
-    # Calculate the average for all vehicles
+def build_the_string(ls_avg_cm_all,ls_avg_hm_all):
+    # # Calculate the average for all vehicles
     calc_avg_cm_all = mpg_calc(ls_avg_cm_all)
     calc_avg_hw_all = mpg_calc(ls_avg_hm_all)
-    calc_avg_hw_audi = mpg_calc(ls_audi)
-
     # Make the sentence for all vehicles
     w_avg_cm_all = ('Out of all ' + str(len(ls_avg_cm_all))
         + ' vehicles, the average city mpg is ' + str(round(calc_avg_cm_all,2)) + '\n')
     w_avg_hm_all = ('Out of all ' + str(len(ls_avg_hm_all))
         + ' vehicles, the average highway MPG is ' + str(round(calc_avg_hw_all,2)) + '\n')
-    w_avg_hm_audi = ('If we only look at the ' + str(len(ls_audi))
-        + ' audis, the average highway MPG is ' + str(round(calc_avg_hw_audi,2)) + '\n')
-
+    return w_avg_cm_all,w_avg_hm_all
+def print_to_console(w_avg_cm_all, w_avg_hm_all, c_vehicles, m_vehicles):
+    print('\n***AVERAGE MPG PER CLASS***')
+    for i in c_vehicles:
+        print(i + ' ' + str(round(mpg_calc(c_vehicles[i]),2)))
+    print('\n***AVERAGE MPG PER MANUFACTURER***')
+    for i in m_vehicles:
+        print(i + ' ' + str(round(mpg_calc(m_vehicles[i]),2)))
+    print('\n***AVERAGE MPG FOR ALL***')
+    print(w_avg_cm_all)
+    print(w_avg_hm_all)
+    return
+def output_to_file(w_avg_cm_all, w_avg_hm_all, c_vehicles, m_vehicles):
     #-----PRINT TO TEXT FILE-----------------------------------------------------------------------------#
     # 1 - Create/Open File
     output = open('jsimo62_assignment3.txt', 'w+')
     # 2 - Write to file
+    output.write('\n\n***AVERAGE MPG PER CLASS***\n')
+    for i in c_vehicles:
+        output.write(i + ' ' + str(round(mpg_calc(c_vehicles[i]),2)) + '\n')
+    output.write('\n\n***AVERAGE MPG PER MANUFACTURER***\n')
+    for i in m_vehicles:
+        output.write(i + ' ' + str(round(mpg_calc(m_vehicles[i]),2)) + '\n')
+    output.write('\n\n***AVERAGE MPG FOR ALL***\n')
     output.write(w_avg_cm_all + '\n')
     output.write(w_avg_hm_all + '\n')
-    output.write(w_avg_hm_audi + '\n')
+    # output.write(w_avg_hm_audi + '\n')
     output.close()
+    return
+def scan_file(file):
+    with open(file, newline='') as csvfile:
+        f_mpg = csv.DictReader(csvfile)
+        # Loop through csv
+        for row in f_mpg:
+            # append to specified list
+            ls_avg_cm_all.append(int(row['cty']))
+            ls_avg_hm_all.append(int(row['hwy']))
+            group_by_class(row)
+            group_by_manuf(row)
+    return
 
-    # import os
-    # player = 'bob'
-    #
-    # filename = player+'.txt'
-    #
-    # if os.path.exists(filename):
-    #     append_write = 'a' # append if already exists
-    # else:
-    #     append_write = 'w' # make a new file if not
-    #
-    # highscore = open(filename,append_write)
-    # highscore.write("Username: " + player + '\n')
-    # highscore.close()
-
-
-
-
-    #-----TEST OUTPUTS ----------------------------------------------------------------------------------#
-    # Print sets to command line
-    #print(s_manuf)
-    #print(s_class)
-    # Pring grouped by list to command newline
-    #print(ls_avg_hm_manuf)
-    #print(ls_avg_hm_class)
-    # Print the sentences in command line
-    print(w_avg_cm_all)
-    print(w_avg_hm_all)
-    print(w_avg_hm_audi)
+# DO THE WORK
+scan_file(file)
+w_avg_cm_all,w_avg_hm_all = build_the_string(ls_avg_cm_all,ls_avg_hm_all)
+# SHOW ME THE RESULTS
+print_to_console(w_avg_cm_all,w_avg_hm_all,c_vehicles,m_vehicles)
+output_to_file(w_avg_cm_all,w_avg_hm_all,c_vehicles,m_vehicles)
