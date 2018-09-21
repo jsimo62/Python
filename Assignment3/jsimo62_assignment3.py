@@ -107,20 +107,18 @@ def print_to_console(w_avg_cm_all, w_avg_hm_all, c_vehicles, m_vehicles):
 def output_to_file(w_avg_cm_all, w_avg_hm_all, c_vehicles, m_vehicles):
     #-----PRINT TO TEXT FILE-----------------------------------------------------------------------------#
     # 1 - Create/Open File
-    output = open('jsimo62_assignment3.txt', 'w+')
-    # 2 - Write to file
-    output.write('\n\n***AVERAGE MPG PER CLASS***\n')
-    for i in c_vehicles:
-        output.write(i + ' ' + str(round(mpg_calc(c_vehicles[i]),2)) + '\n')
-    output.write('\n\n***AVERAGE MPG PER MANUFACTURER***\n')
-    for i in m_vehicles:
-        output.write(i + ' ' + str(round(mpg_calc(m_vehicles[i]),2)) + '\n')
-    output.write('\n\n***AVERAGE MPG FOR ALL***\n')
-    output.write(w_avg_cm_all + '\n')
-    output.write(w_avg_hm_all + '\n')
-    # output.write(w_avg_hm_audi + '\n')
-    output.close()
-    return
+    with open('jsimo62_assignment3.txt', 'w') as output:
+        # 2 - Write to file
+        output.write('\n\n***AVERAGE MPG PER CLASS***\n')
+        for i in c_vehicles:
+            output.write(i + ' ' + str(round(mpg_calc(c_vehicles[i]),2)) + '\n')
+        output.write('\n\n***AVERAGE MPG PER MANUFACTURER***\n')
+        for i in m_vehicles:
+            output.write(i + ' ' + str(round(mpg_calc(m_vehicles[i]),2)) + '\n')
+        output.write('\n\n***AVERAGE MPG FOR ALL***\n')
+        output.write(w_avg_cm_all + '\n')
+        output.write(w_avg_hm_all + '\n')
+        return
 def scan_file(file):
     with open(file, newline='') as csvfile:
         f_mpg = csv.DictReader(csvfile)
