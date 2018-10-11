@@ -20,3 +20,8 @@ class Magic8Ball:
 
     def get_answer(self):
         return self.answer
+
+    def ask(self):
+        self.shake()
+        self.get_answer()
+        return self.answer

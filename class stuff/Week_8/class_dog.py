@@ -7,3 +7,9 @@ class Dog:
 
     def add_trick(self, trick):
         self.tricks.append(trick)
+
+    def remove_trick(self, trick):
+        for t in self.tricks:
+            if trick == t:
+                self.tricks.remove(t)
+                
