@@ -26,10 +26,3 @@ pontiac 26.4
 subaru 25.57
 toyota 24.91
 volkswagen 29.22
-
-
-***AVERAGE MPG FOR ALL***
-Out of all 234 vehicles, the average city mpg is 16.86
-
-Out of all 234 vehicles, the average highway MPG is 23.44
-
