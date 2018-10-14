@@ -1,23 +1,24 @@
 from jsimo62_cust_class import Customer
-import sqlalchemy as db
+from jsimo62_db_class import Database
 import json
 
 
-engine = db.create_engine('sqlite:///customer.sqlite')
-connection = engine.connect()
-results = connection.execute("select * from customer")
+def get_cust_data():
+     db = Database("sqlite:///customer.sqlite", "select * from customer")
+     cust_data = Database.run_query(db)
+     return cust_data
 
-customer = []
-for row in results:
-    c = Customer(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
-    customer.append(c.to_json())
+def cust_info():
     name = Customer.full_name(c)
     age = Customer.age(c)
-    print(name, age)
+    address = Customer.address(c)
+    return name, age, address
 
-connection.close()
+customer = []
+for row in get_cust_data():
+    c = Customer(row[0], row[1], row[2], row[3], row[4], row[5], row[6])
+    customer.append(c.to_json())
+    print(cust_info())
 
-
-# print(customers)
 with open('jsimo62_assignment4.json', 'w') as file:
     json.dump(customer, file)

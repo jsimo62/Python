@@ -7,11 +7,10 @@ class Database:
         self.query = query
 
     def db_connect(self):
-        engine = db.create_engine(db_name)
-        connection = engine.connect()
+        engine = db.create_engine(self.db)
+        results = engine.execute(self.query)
+        return results
 
     def run_query(self):
-        results = connection.execute(query)
-
-    def db_disconnect():
-        connection.close()
+        data = Database.db_connect(self)
+        return data
