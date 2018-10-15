@@ -21,11 +21,11 @@ class Customer:
         age = relativedelta(today, self.bday)
         return age.years
 
-    def address(self):
-        return self.full_name() + " | " + self.city + ", " + self.state + " " + self.zip
+    def location(self):
+        return self.city + ", " + self.state + " " + self.zip
 
     def to_json(self):
         return {'id': self.cust_id,
                 'full_name': self.full_name(),
                 'age': self.age(),
-                'contact_info': self.address()}
+                'location': self.location()}
