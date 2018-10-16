@@ -14,3 +14,8 @@ class Database:
     def run_query(self):
         data = Database.db_connect(self)
         return data
+
+    def sort_results(self):
+        sorted_query = self.query + " DESC"
+        sorted_data = Database.db_connect(self)
+        return sorted_data
